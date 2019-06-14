@@ -12,7 +12,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = { list: '' }
-    this.state.list = this.props.list; //whats the need of this
+    this.state.list = this.props.list; 
   }
 
 
@@ -34,7 +34,7 @@ return listyyy
   setvalue(e) {
     console.log("click");
     let l = this.state.list; 
-    l.push(this.newitem);  // how do it knows that l is an array and this.newitem upar se aya h kya
+    l.push(this.newitem);  
     this.setState(
       { list: l }
     )
