@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import React from 'react';
+function Task() {
+  return (<div>
+    <App list={["test", "shivali"]} />
+  </div>
   );
+
+}
+class App extends React.Component {
+  newitem = "";
+  constructor(props) {
+    super(props)
+    this.state = { list: '' }
+    this.state.list = this.props.list; //whats the need of this
+  }
+
+
+  change(e) {
+    this.newitem = e.target.value;
+    console.log(this.newitem);
+  }
+
+  getlist(){
+  let listyyy = [];
+  for (let i of this.props.list){
+    listyyy.push(<li>{i}</li>)
+  }
+return listyyy
+
+  }
+
+
+  setvalue(e) {
+    console.log("click");
+    let l = this.state.list; 
+    l.push(this.newitem);  // how do it knows that l is an array and this.newitem upar se aya h kya
+    this.setState(
+      { list: l }
+    )
+    console.log(l)
+  }
+
+  
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={(e) => { this.change(e) }} />
+        <button onClick={(e) => { this.setvalue(e) }}>Add</button>
+
+        {this.getlist()}
+        
+      </div>
+    );
+  }
 }
 
-export default App;
+export default Task; 
